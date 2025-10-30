@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dan4rxtgevd1d"]
+
+[ext_resource type="PackedScene" uid="uid://cxf8h6quaitjx" path="res://floridaMan.tscn" id="1_ig7tw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ig7tw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(1147, 20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+material = SubResource("CanvasItemMaterial_ig7tw")
+position = Vector2(572, 408)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D/CollisionShape2D"]
+offset_left = -572.0
+offset_top = -10.0
+offset_right = 574.0
+offset_bottom = 10.0
+color = Color(0.295625, 0.668596, 0.988247, 1)
+
+[node name="floridaMan" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(189, 80)
+scale = Vector2(0.35, 0.35)
