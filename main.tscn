@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dan4rxtgevd1d"]
+[gd_scene load_steps=6 format=3 uid="uid://dan4rxtgevd1d"]
 
 [ext_resource type="PackedScene" uid="uid://cxf8h6quaitjx" path="res://floridaMan.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://brd331nqpjaxm" path="res://floridaMan2.tscn" id="2_0xm2m"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
@@ -27,5 +28,8 @@ offset_bottom = 10.0
 color = Color(0.295625, 0.668596, 0.988247, 1)
 
 [node name="floridaMan" parent="." instance=ExtResource("1_ig7tw")]
+visible = false
 position = Vector2(189, 80)
-scale = Vector2(0.35, 0.35)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(499, 328)
