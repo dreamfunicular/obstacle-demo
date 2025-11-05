@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dan4rxtgevd1d"]
 
-[ext_resource type="PackedScene" uid="uid://cxf8h6quaitjx" path="res://floridaMan.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://brd331nqpjaxm" path="res://floridaMan2.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b56bfbfwxt5cw" path="res://CrystalMeth.tscn" id="2_h2yge"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
@@ -10,14 +10,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(1147, 20)
 
-[node name="Node2D" type="Node2D"]
+[node name="Root" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(960, 960)
 physics_material_override = SubResource("PhysicsMaterial_7dm0k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 material = SubResource("CanvasItemMaterial_ig7tw")
-position = Vector2(572, 408)
 shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D/CollisionShape2D"]
@@ -27,9 +27,8 @@ offset_right = 574.0
 offset_bottom = 10.0
 color = Color(0.295625, 0.668596, 0.988247, 1)
 
-[node name="floridaMan" parent="." instance=ExtResource("1_ig7tw")]
-visible = false
-position = Vector2(189, 80)
+[node name="FloridaMan" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(960, 900)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(499, 328)
+[node name="CrystalMeth" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(1212, 822)

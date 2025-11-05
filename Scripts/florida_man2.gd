@@ -1,6 +1,7 @@
 extends CharacterBody2D
+class_name FloridaMan
 
-@onready var sprite = $Sprite2D as Sprite2D
+@onready var sprite = $AnimatedSprite2D as AnimatedSprite2D
 @onready var anim = $AnimationPlayer as AnimationPlayer
 
 @export_category("Movement Parameters")
@@ -10,6 +11,9 @@ extends CharacterBody2D
 @export var Jump_Distance: float = 300.0
 var Speed: float = 10000.0
 var Jump_Velocity: float = 500.0
+
+@export var DefaultJumpLimit: int = 1
+var jumps: int = 0
 
 var Jump_Gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var Fall_Gravity: float = 980.0
@@ -31,9 +35,15 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y += Fall_Gravity * delta
 
+	if is_on_floor():
+		jumps = DefaultJumpLimit
+		
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and jumps > 0:
+		if velocity.y > 0:
+			velocity.y = 0
 		velocity.y -= Jump_Velocity
+		jumps -= 1
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

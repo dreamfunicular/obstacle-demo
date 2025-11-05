@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxf8h6quaitjx"]
 
-[ext_resource type="Script" uid="uid://dub4m7j0uiud3" path="res://floridaMan.gd" id="1_jffjt"]
+[ext_resource type="Script" uid="uid://dub4m7j0uiud3" path="res://Scripts/floridaMan.gd" id="1_jffjt"]
 [ext_resource type="Texture2D" uid="uid://dgjnoopfaj3m1" path="res://icon.svg" id="2_e0xt5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jffjt"]
