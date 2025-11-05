@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cnj5jech35ip6"]
 
 [ext_resource type="Texture2D" uid="uid://5mijg57b8743" path="res://Sprites/flag_florida.png" id="1_luqgl"]
-[ext_resource type="Script" uid="uid://df5fbkdyee2d" path="res://checkpoint.gd" id="1_r6hke"]
+[ext_resource type="Script" uid="uid://df5fbkdyee2d" path="res://Scripts/checkpoint.gd" id="1_r6hke"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6hke"]
 atlas = ExtResource("1_luqgl")
@@ -48,7 +48,8 @@ script = ExtResource("1_r6hke")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_r6hke")
-frame_progress = 0.901986
+frame = 2
+frame_progress = 0.940602
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tnhlw")

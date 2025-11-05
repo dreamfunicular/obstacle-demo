@@ -6,6 +6,8 @@ var active: bool = true
 var touching: bool = false
 var player: FloridaMan
 
+@export var power: Vector2 = Vector2(0, -2500)
+
 func _on_body_entered(body: Node2D) -> void:
 	if body is FloridaMan and active:
 		pickup(body)
@@ -20,9 +22,9 @@ func _process(delta: float) -> void:
 
 func pickup(player: FloridaMan):
 	active = false
-	player.jumps += 1
 	refreshTimer.start(1.5)
-	sprite.play("Break")
+	sprite.play("Eaten")
+	player.AddVelocity(power, true)
 
 func refresh():
 	active = true

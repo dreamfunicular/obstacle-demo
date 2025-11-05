@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsu2w77g047hp"]
+
+[ext_resource type="Script" uid="uid://d3nmei4p11kga" path="res://Scripts/ob_steak_le.gd" id="1_37f55"]
+[ext_resource type="Texture2D" uid="uid://cu4gn5ixu7cpn" path="res://Sprites/steak_placeholder.png" id="1_xlrph"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_37f55"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4xja"]
+atlas = ExtResource("1_xlrph")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk1u2"]
+atlas = ExtResource("1_xlrph")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw7mg"]
+atlas = ExtResource("1_xlrph")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v56jr"]
+atlas = ExtResource("1_xlrph")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_adeiy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4xja")
+}],
+"loop": true,
+"name": &"Active",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk1u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw7mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v56jr")
+}],
+"loop": false,
+"name": &"Eaten",
+"speed": 12.0
+}]
+
+[node name="Ob-Steak-le" type="Area2D"]
+script = ExtResource("1_37f55")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_37f55")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_adeiy")
+animation = &"Active"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

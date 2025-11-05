@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dan4rxtgevd1d"]
+[gd_scene load_steps=10 format=3 uid="uid://dan4rxtgevd1d"]
 
 [ext_resource type="PackedScene" uid="uid://brd331nqpjaxm" path="res://floridaMan2.tscn" id="1_mawog"]
 [ext_resource type="PackedScene" uid="uid://b56bfbfwxt5cw" path="res://CrystalMeth.tscn" id="2_b56k5"]
 [ext_resource type="PackedScene" uid="uid://cnj5jech35ip6" path="res://checkpoint.tscn" id="3_scc5w"]
 [ext_resource type="PackedScene" uid="uid://duculk8tnk04j" path="res://death_area.tscn" id="4_fy0p5"]
 [ext_resource type="PackedScene" uid="uid://h28meu21ftpa" path="res://spikes.tscn" id="5_j8njj"]
+[ext_resource type="PackedScene" uid="uid://bsu2w77g047hp" path="res://ob_steak_le.tscn" id="6_b56k5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
@@ -16,7 +17,7 @@ size = Vector2(1147, 16)
 [node name="Root" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(960, 960)
+position = Vector2(0, 136)
 physics_material_override = SubResource("PhysicsMaterial_7dm0k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -38,7 +39,7 @@ grow_vertical = 2
 color = Color(0.295625, 0.668596, 0.988247, 1)
 
 [node name="FloridaMan" parent="." instance=ExtResource("1_mawog")]
-position = Vector2(960, 900)
+position = Vector2(0, 76)
 CoyoteTime = 0.05
 
 [node name="Camera2D" type="Camera2D" parent="FloridaMan"]
@@ -53,19 +54,8 @@ drag_top_margin = 0.02
 drag_right_margin = 0.02
 drag_bottom_margin = 0.02
 
-[node name="CrystalMeth" parent="." instance=ExtResource("2_b56k5")]
-position = Vector2(1248, 824)
-
-[node name="Checkpoint" parent="." instance=ExtResource("3_scc5w")]
-position = Vector2(544, 920)
-scale = Vector2(2, 2)
-
-[node name="Checkpoint2" parent="." instance=ExtResource("3_scc5w")]
-position = Vector2(1472, 920)
-scale = Vector2(2, 2)
-
 [node name="DeathArea" parent="." instance=ExtResource("4_fy0p5")]
-position = Vector2(0, 1180)
+position = Vector2(0, 356)
 scale = Vector2(1000, 10)
 
 [node name="Obstacles" type="Node2D" parent="."]
@@ -73,28 +63,46 @@ scale = Vector2(1000, 10)
 [node name="Spikes" type="Node2D" parent="Obstacles"]
 
 [node name="Spikes1" parent="Obstacles/Spikes" instance=ExtResource("5_j8njj")]
-position = Vector2(1376, 952)
+position = Vector2(416, 128)
 
 [node name="Spikes2" parent="Obstacles/Spikes" instance=ExtResource("5_j8njj")]
-position = Vector2(1344, 952)
+position = Vector2(384, 128)
 
 [node name="Spikes3" parent="Obstacles/Spikes" instance=ExtResource("5_j8njj")]
-position = Vector2(1312, 952)
+position = Vector2(352, 128)
 
 [node name="Spikes4" parent="Obstacles/Spikes" instance=ExtResource("5_j8njj")]
-position = Vector2(1280, 952)
+position = Vector2(320, 128)
 
 [node name="Spikes5" parent="Obstacles/Spikes" instance=ExtResource("5_j8njj")]
-position = Vector2(1248, 952)
+position = Vector2(288, 128)
 
 [node name="Spikes6" parent="Obstacles/Spikes" instance=ExtResource("5_j8njj")]
-position = Vector2(1216, 952)
+position = Vector2(256, 128)
 
 [node name="Spikes7" parent="Obstacles/Spikes" instance=ExtResource("5_j8njj")]
-position = Vector2(1184, 952)
+position = Vector2(224, 128)
 
 [node name="Spikes8" parent="Obstacles/Spikes" instance=ExtResource("5_j8njj")]
-position = Vector2(1152, 952)
+position = Vector2(192, 128)
 
 [node name="Spikes9" parent="Obstacles/Spikes" instance=ExtResource("5_j8njj")]
-position = Vector2(1120, 952)
+position = Vector2(160, 128)
+
+[node name="Checkpoints" type="Node2D" parent="Obstacles"]
+
+[node name="Checkpoint" parent="Obstacles/Checkpoints" instance=ExtResource("3_scc5w")]
+position = Vector2(-416, 96)
+scale = Vector2(2, 2)
+
+[node name="Checkpoint2" parent="Obstacles/Checkpoints" instance=ExtResource("3_scc5w")]
+position = Vector2(512, 96)
+scale = Vector2(2, 2)
+
+[node name="Movement Items" type="Node2D" parent="Obstacles"]
+
+[node name="CrystalMeth" parent="Obstacles/Movement Items" instance=ExtResource("2_b56k5")]
+position = Vector2(288, 0)
+
+[node name="Ob-Steak-le" parent="Obstacles/Movement Items" instance=ExtResource("6_b56k5")]
+position = Vector2(-512, 104)

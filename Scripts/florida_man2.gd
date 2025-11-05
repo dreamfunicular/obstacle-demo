@@ -84,3 +84,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_coyote_timer_timeout() -> void:
 	canCoyote = false
+
+func AddVelocity(vel: Vector2, reset: bool = false)->void:
+	if reset and vel.x != 0:
+		velocity.x = 0
+	if reset and vel.y != 0:
+		velocity.y = 0
+	velocity.x += vel.x
+	velocity.y += vel.y
