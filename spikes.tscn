@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://h28meu21ftpa"]
+
+[ext_resource type="Script" uid="uid://dk1af5ehqj6l2" path="res://death_area.gd" id="1_nrdsm"]
+[ext_resource type="Texture2D" uid="uid://dr2vao307126t" path="res://Sprites/spikes_placeholder.png" id="2_8fhau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds4fp"]
+size = Vector2(30, 14)
+
+[node name="Spikes" type="Area2D"]
+script = ExtResource("1_nrdsm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_8fhau")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_ds4fp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,17 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnj5jech35ip6"]
+[gd_scene load_steps=9 format=3 uid="uid://cnj5jech35ip6"]
 
 [ext_resource type="Texture2D" uid="uid://5mijg57b8743" path="res://Sprites/flag_florida.png" id="1_luqgl"]
 [ext_resource type="Script" uid="uid://df5fbkdyee2d" path="res://checkpoint.gd" id="1_r6hke"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6hke"]
+atlas = ExtResource("1_luqgl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnhlw"]
+atlas = ExtResource("1_luqgl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s20m7"]
+atlas = ExtResource("1_luqgl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q25r3"]
+atlas = ExtResource("1_luqgl")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r6hke"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_luqgl")
+"texture": SubResource("AtlasTexture_r6hke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnhlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s20m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q25r3")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnhlw"]
@@ -23,6 +48,7 @@ script = ExtResource("1_r6hke")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_r6hke")
+frame_progress = 0.901986
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tnhlw")
