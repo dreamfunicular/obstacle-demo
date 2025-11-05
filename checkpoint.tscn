@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnj5jech35ip6"]
+
+[ext_resource type="Texture2D" uid="uid://5mijg57b8743" path="res://Sprites/flag_florida.png" id="1_luqgl"]
+[ext_resource type="Script" uid="uid://df5fbkdyee2d" path="res://checkpoint.gd" id="1_r6hke"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r6hke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_luqgl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnhlw"]
+size = Vector2(32, 32)
+
+[node name="Checkpoint" type="Area2D"]
+script = ExtResource("1_r6hke")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_r6hke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tnhlw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
