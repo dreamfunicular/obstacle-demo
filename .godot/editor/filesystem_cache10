@@ -1,6 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1761858613
-floridaMan.gd::GDScript::8566887219724491186::1761858479::0::1::::<>RigidBody2D<><>0<>0<><>::
-floridaMan.tscn::PackedScene::6399524474999643733::1761858479::0::1::::<><><>0<>0<><>::uid://dub4m7j0uiud3::::res://floridaMan.gd<>uid://dgjnoopfaj3m1::::res://icon.svg
-icon.svg::CompressedTexture2D::7599789593441199946::1761858479::1761858614::1::::<><><>0<>0<>574fe0eee05a0756a671a8e89ed163cc<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-main.tscn::PackedScene::7187891350835815787::1761858479::0::1::::<><><>0<>0<><>::uid://cxf8h6quaitjx::::res://floridaMan.tscn
+::res://::1762355288
+floridaMan2.tscn::PackedScene::3587575623265556498::1761860448::0::1::::<><><>0<>0<><>::uid://bqnqded1x3dp2::::res://florida_man2.gd<>uid://dgjnoopfaj3m1::::res://icon.svg
+floridaMan.gd::GDScript::8566887219724491186::1761859122::0::1::::<>RigidBody2D<><>0<>0<><>::
+floridaMan.tscn::PackedScene::6399524474999643733::1761860448::0::1::::<><><>0<>0<><>::uid://dub4m7j0uiud3::::res://floridaMan.gd<>uid://dgjnoopfaj3m1::::res://icon.svg
+florida_man2.gd::GDScript::3537256137911349493::1761860404::0::1::::<>CharacterBody2D<><>0<>0<><>::
+icon.svg::CompressedTexture2D/CompressedTexture2D::7599789593441199946::1761858479::1761858614::1::::<><><>0<>0<>574fe0eee05a0756a671a8e89ed163cc<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+main.tscn::PackedScene::7187891350835815787::1761860465::0::1::::<><><>0<>0<><>::uid://cxf8h6quaitjx::::res://floridaMan.tscn<>uid://brd331nqpjaxm::::res://floridaMan2.tscn
