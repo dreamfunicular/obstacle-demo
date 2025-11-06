@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dan4rxtgevd1d"]
+[gd_scene load_steps=11 format=3 uid="uid://dan4rxtgevd1d"]
 
 [ext_resource type="PackedScene" uid="uid://brd331nqpjaxm" path="res://floridaMan2.tscn" id="1_mawog"]
+[ext_resource type="Script" uid="uid://06opfnflu4up" path="res://Scripts/ice_ground.gd" id="1_scc5w"]
 [ext_resource type="PackedScene" uid="uid://b56bfbfwxt5cw" path="res://CrystalMeth.tscn" id="2_b56k5"]
 [ext_resource type="PackedScene" uid="uid://cnj5jech35ip6" path="res://checkpoint.tscn" id="3_scc5w"]
 [ext_resource type="PackedScene" uid="uid://duculk8tnk04j" path="res://death_area.tscn" id="4_fy0p5"]
@@ -38,8 +39,34 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.295625, 0.668596, 0.988247, 1)
 
+[node name="Ice" type="StaticBody2D" parent="."]
+position = Vector2(-1153, 136)
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+script = ExtResource("1_scc5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ice"]
+material = SubResource("CanvasItemMaterial_ig7tw")
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="ColorRect" type="ColorRect" parent="Ice/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.0
+offset_top = -8.0
+offset_right = 573.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.748413, 0.887789, 0.980672, 1)
+
 [node name="FloridaMan" parent="." instance=ExtResource("1_mawog")]
 position = Vector2(0, 76)
+ice_max_speed = 1300.0
+speed_smooth = 0.2
+ice_speed_smooth = 0.02
 CoyoteTime = 0.05
 
 [node name="Camera2D" type="Camera2D" parent="FloridaMan"]

@@ -10,7 +10,10 @@ class_name FloridaMan
 @export var Jump_Fall_Time: float = .25
 @export var Jump_Height: float = 100.0
 @export var Jump_Distance: float = 300.0
-var Speed: float = 10000.0
+@export var max_speed: float = 1000.0
+@export var ice_max_speed: float = 2000.0
+@export_range(0.0, 1.0) var speed_smooth: float
+@export_range(0.0, 1.0) var ice_speed_smooth: float
 var Jump_Velocity: float = 500.0
 
 @export var DefaultJumpLimit: int = 1
@@ -18,6 +21,9 @@ var jumps: int = 0
 var wasGrounded: bool = false
 @export var CoyoteTime: float = 0.1
 var canCoyote: bool = false
+
+var on_ice: bool = false
+var current_speed: float = 0.0
 
 var Jump_Gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var Fall_Gravity: float = 980.0
@@ -43,11 +49,13 @@ func Calculate_Movement_Parameters()->void:
 	Jump_Gravity = (2*Jump_Height)/pow(Jump_Peak_Time,2)
 	Fall_Gravity = (2*Jump_Height)/pow(Jump_Fall_Time,2)
 	Jump_Velocity = Jump_Gravity * Jump_Peak_Time
-	Speed = Jump_Distance/(Jump_Peak_Time+Jump_Fall_Time)
+	current_speed = Jump_Distance/(Jump_Peak_Time+Jump_Fall_Time)
 
 func _physics_process(delta: float) -> void:
+	var on_floor: bool = true
 	# Add the gravity.
 	if not is_on_floor():
+		on_floor = false
 		if velocity.y<0:
 			velocity.y += Jump_Gravity * delta
 		else:
@@ -73,13 +81,25 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_axis("left", "right")
+	var input_dir: float = Input.get_axis("left", "right")
 	if input_dir != 0:
-		velocity.x = input_dir * Speed
+		if on_ice:
+			current_speed = lerpf(current_speed, ice_max_speed * input_dir, ice_speed_smooth)
+		else:
+			current_speed = lerpf(current_speed, max_speed * input_dir, speed_smooth)
+		velocity.x = current_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, Speed)
+		if on_floor:
+			if on_ice:
+				current_speed = lerpf(current_speed, 0, ice_speed_smooth)
+			else:
+				current_speed = lerpf(current_speed, 0, speed_smooth)
+				if current_speed < 0.05:
+					current_speed = 0
+			velocity.x = current_speed
 
 	move_and_slide()
+	check_is_on_ice()
 
 
 func _on_coyote_timer_timeout() -> void:
@@ -92,3 +112,11 @@ func AddVelocity(vel: Vector2, reset: bool = false)->void:
 		velocity.y = 0
 	velocity.x += vel.x
 	velocity.y += vel.y
+
+func check_is_on_ice():
+	on_ice = false
+	for collision: int in get_slide_collision_count():
+		var current_collision: KinematicCollision2D = get_slide_collision(collision)
+		if current_collision.get_collider() is Ice:
+			on_ice = true
+			return
