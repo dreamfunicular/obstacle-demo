@@ -33,4 +33,8 @@ shape = SubResource("RectangleShape2D_jffjt")
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="ChillTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="ChillTimer" to="." method="_on_chill_timer_timeout"]

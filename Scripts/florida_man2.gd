@@ -4,6 +4,7 @@ class_name FloridaMan
 @onready var sprite = $AnimatedSprite2D as AnimatedSprite2D
 @onready var anim = $AnimationPlayer as AnimationPlayer
 @onready var coyoteTimer = $CoyoteTimer as Timer
+@onready var chillTimer = $ChillTimer as Timer
 
 @export_category("Movement Parameters")
 @export var Jump_Peak_Time: float = .15
@@ -30,6 +31,8 @@ var Fall_Gravity: float = 980.0
 
 var SpawnPoint: Vector2 = Vector2(0, 0)
 
+var chilly: bool = false
+
 func _ready() -> void:
 	Calculate_Movement_Parameters()
 	SpawnPoint = position
@@ -46,6 +49,16 @@ func SetSpawn(point: Vector2)->void:
 func Die()->void:
 	#Death sound
 	GameManager.emit_signal("Reset")
+
+func Chill()->void:
+	chilly = true
+	sprite.modulate = Color(0.75, 0.75, 1, 1)
+	chillTimer.start()
+
+func Unchill()->void:
+	chilly = false
+	sprite.modulate = Color(1, 1, 1, 1)
+	chillTimer.stop()
 
 func Calculate_Movement_Parameters()->void:
 	Jump_Gravity = (2*Jump_Height)/pow(Jump_Peak_Time,2)
@@ -82,17 +95,16 @@ func _physics_process(delta: float) -> void:
 		canCoyote = false
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir: float = Input.get_axis("left", "right")
 	if input_dir != 0:
-		if on_ice:
+		if on_ice or chilly:
 			current_speed = lerpf(current_speed, ice_max_speed * input_dir, ice_speed_smooth)
 		else:
 			current_speed = lerpf(current_speed, max_speed * input_dir, speed_smooth)
 		velocity.x = current_speed
 	else:
 		if on_floor:
-			if on_ice:
+			if on_ice or chilly:
 				current_speed = lerpf(current_speed, 0, ice_speed_smooth)
 			else:
 				current_speed = lerpf(current_speed, 0, speed_smooth)
@@ -126,3 +138,7 @@ func check_is_on_ice():
 		if current_collision.get_collider() is Ice:
 			on_ice = true
 			return
+
+
+func _on_chill_timer_timeout() -> void:
+	Unchill()

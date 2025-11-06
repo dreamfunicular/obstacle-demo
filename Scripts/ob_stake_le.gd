@@ -6,9 +6,18 @@ class_name ObStakeLe
 @onready var timer = $Timer as Timer
 var canShoot = true
 @export var cooldown: float = 1.0
+var touching: bool = false
 
 func _on_trigger_area_2d_body_entered(body: Node2D) -> void:
 	if canShoot and body is FloridaMan:
+		SpawnBullet()
+		canShoot = false
+		timer.start(cooldown)
+	elif body is FloridaMan:
+		touching = true
+
+func _process(delta: float) -> void:
+	if touching and canShoot:
 		SpawnBullet()
 		canShoot = false
 		timer.start(cooldown)
@@ -21,3 +30,8 @@ func SpawnBullet()->void:
 
 func _on_timer_timeout() -> void:
 	canShoot = true
+
+
+func _on_trigger_area_2d_body_exited(body: Node2D) -> void:
+	if body is FloridaMan:
+		touching = false

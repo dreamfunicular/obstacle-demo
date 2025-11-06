@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgerkbn3tg657"]
+
+[ext_resource type="Script" uid="uid://3tvnakgg0v4d" path="res://Scripts/orb_stay_cool.gd" id="1_x7cs8"]
+[ext_resource type="Texture2D" uid="uid://bxna5x3nf147a" path="res://Sprites/orbstaycool.png" id="2_x7cs8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a28pv"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f02t"]
+atlas = ExtResource("2_x7cs8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm772"]
+atlas = ExtResource("2_x7cs8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxjob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f02t")
+}],
+"loop": true,
+"name": &"Active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm772")
+}],
+"loop": true,
+"name": &"Break",
+"speed": 5.0
+}]
+
+[node name="OrbStayCool" type="Area2D"]
+script = ExtResource("1_x7cs8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a28pv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jxjob")
+animation = &"Active"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
