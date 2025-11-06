@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dan4rxtgevd1d"]
+[gd_scene load_steps=12 format=3 uid="uid://dan4rxtgevd1d"]
 
 [ext_resource type="PackedScene" uid="uid://brd331nqpjaxm" path="res://floridaMan2.tscn" id="1_mawog"]
 [ext_resource type="Script" uid="uid://06opfnflu4up" path="res://Scripts/ice_ground.gd" id="1_scc5w"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://duculk8tnk04j" path="res://death_area.tscn" id="4_fy0p5"]
 [ext_resource type="PackedScene" uid="uid://h28meu21ftpa" path="res://spikes.tscn" id="5_j8njj"]
 [ext_resource type="PackedScene" uid="uid://bsu2w77g047hp" path="res://ob_steak_le.tscn" id="6_b56k5"]
+[ext_resource type="PackedScene" uid="uid://bqtattgv2ny4b" path="res://ob_stake_le.tscn" id="8_fy0p5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
@@ -18,7 +19,8 @@ size = Vector2(1147, 16)
 [node name="Root" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, 136)
+position = Vector2(136, 136)
+scale = Vector2(1.25, 1)
 physics_material_override = SubResource("PhysicsMaterial_7dm0k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -26,6 +28,28 @@ material = SubResource("CanvasItemMaterial_ig7tw")
 shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.0
+offset_top = -8.0
+offset_right = 573.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.295625, 0.668596, 0.988247, 1)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1856, 136)
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+material = SubResource("CanvasItemMaterial_ig7tw")
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2/CollisionShape2D"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -123,7 +147,7 @@ position = Vector2(-416, 96)
 scale = Vector2(2, 2)
 
 [node name="Checkpoint2" parent="Obstacles/Checkpoints" instance=ExtResource("3_scc5w")]
-position = Vector2(512, 96)
+position = Vector2(640, 96)
 scale = Vector2(2, 2)
 
 [node name="Movement Items" type="Node2D" parent="Obstacles"]
@@ -131,5 +155,16 @@ scale = Vector2(2, 2)
 [node name="CrystalMeth" parent="Obstacles/Movement Items" instance=ExtResource("2_b56k5")]
 position = Vector2(288, 0)
 
+[node name="CrystalMeth2" parent="Obstacles/Movement Items" instance=ExtResource("2_b56k5")]
+position = Vector2(1088, 64)
+
 [node name="Ob-Steak-le" parent="Obstacles/Movement Items" instance=ExtResource("6_b56k5")]
 position = Vector2(-512, 104)
+
+[node name="Traps" type="Node2D" parent="Obstacles"]
+
+[node name="Ob-Stake-le" parent="Obstacles/Traps" instance=ExtResource("8_fy0p5")]
+position = Vector2(2368, 96)
+
+[node name="Ob-Stake-le2" parent="Obstacles/Traps" instance=ExtResource("8_fy0p5")]
+position = Vector2(2640, 136)

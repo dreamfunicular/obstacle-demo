@@ -37,6 +37,8 @@ func _ready() -> void:
 
 var resetFunc = func Reset()->void:
 	position = SpawnPoint
+	velocity = Vector2(0, 0)
+	current_speed = 0
 
 func SetSpawn(point: Vector2)->void:
 	SpawnPoint = point
@@ -49,7 +51,7 @@ func Calculate_Movement_Parameters()->void:
 	Jump_Gravity = (2*Jump_Height)/pow(Jump_Peak_Time,2)
 	Fall_Gravity = (2*Jump_Height)/pow(Jump_Fall_Time,2)
 	Jump_Velocity = Jump_Gravity * Jump_Peak_Time
-	current_speed = Jump_Distance/(Jump_Peak_Time+Jump_Fall_Time)
+	max_speed = Jump_Distance/(Jump_Peak_Time+Jump_Fall_Time)
 
 func _physics_process(delta: float) -> void:
 	var on_floor: bool = true

@@ -1,3 +1,41 @@
-[gd_scene format=3 uid="uid://e5yh778f1rr4"]
+[gd_scene load_steps=6 format=3 uid="uid://e5yh778f1rr4"]
+
+[ext_resource type="Texture2D" uid="uid://b0x1hdlxwwai7" path="res://Sprites/stake.png" id="1_v7oki"]
+[ext_resource type="Script" uid="uid://b03oya54bdvuw" path="res://Scripts/bullet.gd" id="1_v8qja"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8qja"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4vbm"]
+atlas = ExtResource("1_v7oki")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2b2rl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4vbm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Bullet" type="Area2D"]
+script = ExtResource("1_v8qja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v8qja")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_2b2rl")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
