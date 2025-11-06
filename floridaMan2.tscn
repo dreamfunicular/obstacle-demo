@@ -36,5 +36,12 @@ wait_time = 0.1
 [node name="ChillTimer" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="BurnTimer" type="Timer" parent="."]
+
+[node name="RespawnIFramesTimer" type="Timer" parent="."]
+wait_time = 0.05
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="ChillTimer" to="." method="_on_chill_timer_timeout"]
+[connection signal="timeout" from="BurnTimer" to="." method="_on_burn_timer_timeout"]
+[connection signal="timeout" from="RespawnIFramesTimer" to="." method="_on_respawn_i_frames_timer_timeout"]

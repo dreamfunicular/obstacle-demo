@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dan4rxtgevd1d"]
+[gd_scene load_steps=14 format=3 uid="uid://dan4rxtgevd1d"]
 
 [ext_resource type="PackedScene" uid="uid://brd331nqpjaxm" path="res://floridaMan2.tscn" id="1_mawog"]
 [ext_resource type="Script" uid="uid://06opfnflu4up" path="res://Scripts/ice_ground.gd" id="1_scc5w"]
 [ext_resource type="PackedScene" uid="uid://b56bfbfwxt5cw" path="res://CrystalMeth.tscn" id="2_b56k5"]
 [ext_resource type="PackedScene" uid="uid://cnj5jech35ip6" path="res://checkpoint.tscn" id="3_scc5w"]
 [ext_resource type="PackedScene" uid="uid://duculk8tnk04j" path="res://death_area.tscn" id="4_fy0p5"]
+[ext_resource type="PackedScene" uid="uid://0p7npyeand7k" path="res://fire_area.tscn" id="5_hkdkl"]
 [ext_resource type="PackedScene" uid="uid://h28meu21ftpa" path="res://spikes.tscn" id="5_j8njj"]
 [ext_resource type="PackedScene" uid="uid://bsu2w77g047hp" path="res://ob_steak_le.tscn" id="6_b56k5"]
 [ext_resource type="PackedScene" uid="uid://bqtattgv2ny4b" path="res://ob_stake_le.tscn" id="8_fy0p5"]
@@ -42,8 +43,31 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.295625, 0.668596, 0.988247, 1)
 
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(1088, 136)
+scale = Vector2(0.3, 1)
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+material = SubResource("CanvasItemMaterial_ig7tw")
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.0
+offset_top = -8.0
+offset_right = 573.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.295625, 0.668596, 0.988247, 1)
+
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(1856, 136)
+position = Vector2(1896, 136)
 physics_material_override = SubResource("PhysicsMaterial_7dm0k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
@@ -141,6 +165,69 @@ position = Vector2(192, 128)
 [node name="Spikes9" parent="Obstacles/Spikes" instance=ExtResource("5_j8njj")]
 position = Vector2(160, 128)
 
+[node name="FireArea" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(928, 120)
+
+[node name="FireArea2" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(960, 120)
+
+[node name="FireArea3" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(992, 120)
+
+[node name="FireArea4" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1024, 120)
+
+[node name="FireArea5" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1056, 120)
+
+[node name="FireArea6" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1088, 120)
+
+[node name="FireArea7" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1120, 120)
+
+[node name="FireArea8" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1152, 120)
+
+[node name="FireArea9" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1184, 120)
+
+[node name="FireArea10" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1216, 120)
+
+[node name="FireArea11" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1248, 120)
+
+[node name="FireArea12" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(944, 120)
+
+[node name="FireArea13" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(976, 120)
+
+[node name="FireArea14" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1008, 120)
+
+[node name="FireArea15" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1040, 120)
+
+[node name="FireArea16" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1072, 120)
+
+[node name="FireArea17" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1104, 120)
+
+[node name="FireArea18" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1136, 120)
+
+[node name="FireArea19" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1168, 120)
+
+[node name="FireArea20" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1200, 120)
+
+[node name="FireArea21" parent="Obstacles/Spikes" instance=ExtResource("5_hkdkl")]
+position = Vector2(1232, 120)
+
 [node name="Checkpoints" type="Node2D" parent="Obstacles"]
 
 [node name="Checkpoint" parent="Obstacles/Checkpoints" instance=ExtResource("3_scc5w")]
@@ -156,19 +243,16 @@ scale = Vector2(2, 2)
 [node name="CrystalMeth" parent="Obstacles/Utility Items" instance=ExtResource("2_b56k5")]
 position = Vector2(288, 0)
 
-[node name="CrystalMeth2" parent="Obstacles/Utility Items" instance=ExtResource("2_b56k5")]
-position = Vector2(1088, 64)
-
 [node name="Ob-Steak-le" parent="Obstacles/Utility Items" instance=ExtResource("6_b56k5")]
 position = Vector2(-512, 104)
 
 [node name="OrbStayCool" parent="Obstacles/Utility Items" instance=ExtResource("8_j8njj")]
-position = Vector2(1472, 0)
+position = Vector2(1088, 0)
 
 [node name="Traps" type="Node2D" parent="Obstacles"]
 
 [node name="Ob-Stake-le" parent="Obstacles/Traps" instance=ExtResource("8_fy0p5")]
-position = Vector2(2368, 96)
+position = Vector2(2408, 96)
 
 [node name="Ob-Stake-le2" parent="Obstacles/Traps" instance=ExtResource("8_fy0p5")]
-position = Vector2(2640, 136)
+position = Vector2(2688, 96)

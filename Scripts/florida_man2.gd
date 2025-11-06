@@ -5,6 +5,8 @@ class_name FloridaMan
 @onready var anim = $AnimationPlayer as AnimationPlayer
 @onready var coyoteTimer = $CoyoteTimer as Timer
 @onready var chillTimer = $ChillTimer as Timer
+@onready var burnTimer = $BurnTimer as Timer
+@onready var respawnTimer = $RespawnIFramesTimer as Timer
 
 @export_category("Movement Parameters")
 @export var Jump_Peak_Time: float = .15
@@ -32,6 +34,8 @@ var Fall_Gravity: float = 980.0
 var SpawnPoint: Vector2 = Vector2(0, 0)
 
 var chilly: bool = false
+var burning: bool = false
+var invuln: bool = false
 
 func _ready() -> void:
 	Calculate_Movement_Parameters()
@@ -42,15 +46,21 @@ var resetFunc = func Reset()->void:
 	position = SpawnPoint
 	velocity = Vector2(0, 0)
 	current_speed = 0
+	Extinguish()
+	Unchill()
 
 func SetSpawn(point: Vector2)->void:
 	SpawnPoint = point
 
 func Die()->void:
-	#Death sound
-	GameManager.emit_signal("Reset")
+	if (!invuln):
+		#Death sound
+		GameManager.emit_signal("Reset")
+		invuln = true
+		respawnTimer.start()
 
 func Chill()->void:
+	Extinguish()
 	chilly = true
 	sprite.modulate = Color(0.75, 0.75, 1, 1)
 	chillTimer.start()
@@ -59,6 +69,17 @@ func Unchill()->void:
 	chilly = false
 	sprite.modulate = Color(1, 1, 1, 1)
 	chillTimer.stop()
+
+func SetOnFire()->void:
+	if not chilly and not burning and not invuln:
+		burning = true
+		burnTimer.start()
+		sprite.modulate = Color(1, 0.75, 0.25, 1)
+
+func Extinguish()->void:
+	burning = false
+	burnTimer.stop()
+	sprite.modulate = Color(1, 1, 1, 1)
 
 func Calculate_Movement_Parameters()->void:
 	Jump_Gravity = (2*Jump_Height)/pow(Jump_Peak_Time,2)
@@ -142,3 +163,13 @@ func check_is_on_ice():
 
 func _on_chill_timer_timeout() -> void:
 	Unchill()
+
+
+func _on_burn_timer_timeout() -> void:
+	Die()
+	burning = false
+	sprite.modulate = Color(1, 1, 1, 1)
+
+
+func _on_respawn_i_frames_timer_timeout() -> void:
+	invuln = false
