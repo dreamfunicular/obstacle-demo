@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dan4rxtgevd1d"]
+[gd_scene load_steps=15 format=3 uid="uid://dan4rxtgevd1d"]
 
 [ext_resource type="PackedScene" uid="uid://brd331nqpjaxm" path="res://floridaMan2.tscn" id="1_mawog"]
 [ext_resource type="Script" uid="uid://06opfnflu4up" path="res://Scripts/ice_ground.gd" id="1_scc5w"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bsu2w77g047hp" path="res://ob_steak_le.tscn" id="6_b56k5"]
 [ext_resource type="PackedScene" uid="uid://bqtattgv2ny4b" path="res://ob_stake_le.tscn" id="8_fy0p5"]
 [ext_resource type="PackedScene" uid="uid://bgerkbn3tg657" path="res://OrbStayCool.tscn" id="8_j8njj"]
+[ext_resource type="PackedScene" uid="uid://bqsi3lvigjgc2" path="res://honey.tscn" id="11_egudy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
@@ -75,6 +76,51 @@ material = SubResource("CanvasItemMaterial_ig7tw")
 shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D2/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.0
+offset_top = -8.0
+offset_right = 573.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.295625, 0.668596, 0.988247, 1)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(3040, 136)
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+material = SubResource("CanvasItemMaterial_ig7tw")
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D4/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.0
+offset_top = -8.0
+offset_right = 573.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.295625, 0.668596, 0.988247, 1)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+position = Vector2(2752, 96)
+scale = Vector2(0.025, 4)
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+material = SubResource("CanvasItemMaterial_ig7tw")
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D5/CollisionShape2D"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -256,3 +302,102 @@ position = Vector2(2408, 96)
 
 [node name="Ob-Stake-le2" parent="Obstacles/Traps" instance=ExtResource("8_fy0p5")]
 position = Vector2(2688, 96)
+
+[node name="Ob-Stake-le3" parent="Obstacles/Traps" instance=ExtResource("8_fy0p5")]
+position = Vector2(3376, 96)
+
+[node name="Honey" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1400, 128)
+
+[node name="Honey2" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1432, 128)
+
+[node name="Honey3" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1464, 128)
+
+[node name="Honey4" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1496, 128)
+
+[node name="Honey5" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1528, 128)
+
+[node name="Honey6" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1560, 128)
+
+[node name="Honey7" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1592, 128)
+
+[node name="Honey8" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1624, 128)
+
+[node name="Honey9" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1656, 128)
+
+[node name="Honey10" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1688, 128)
+
+[node name="Honey11" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1720, 128)
+
+[node name="Honey12" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1752, 128)
+
+[node name="Honey13" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1784, 128)
+
+[node name="Honey14" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1816, 128)
+
+[node name="Honey15" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1848, 128)
+
+[node name="Honey16" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1880, 128)
+
+[node name="Honey17" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1912, 128)
+
+[node name="Honey18" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1944, 128)
+
+[node name="Honey19" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(1976, 128)
+
+[node name="Honey20" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2008, 128)
+
+[node name="Honey21" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2040, 128)
+
+[node name="Honey22" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2072, 128)
+
+[node name="Honey23" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2104, 128)
+
+[node name="Honey24" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2136, 128)
+
+[node name="Honey25" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2168, 128)
+
+[node name="Honey26" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2200, 128)
+
+[node name="Honey27" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2232, 128)
+
+[node name="Honey28" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2392, 128)
+
+[node name="Honey29" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2360, 128)
+
+[node name="Honey30" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2328, 128)
+
+[node name="Honey31" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2296, 128)
+
+[node name="Honey32" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
+position = Vector2(2264, 128)

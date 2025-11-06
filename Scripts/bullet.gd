@@ -3,8 +3,14 @@ class_name Bullet
 
 @export var vel: Vector2 = Vector2(-100, 0)
 
+func _ready() -> void:
+	GameManager.connect("ResetBullets", resetFunc)
+
 func  _physics_process(delta: float) -> void:
 	position += vel * delta
+
+var resetFunc = func ResetExplode()->void:
+	Explode()
 
 func Explode():
 	queue_free()
