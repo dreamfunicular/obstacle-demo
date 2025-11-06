@@ -284,6 +284,10 @@ scale = Vector2(2, 2)
 position = Vector2(640, 96)
 scale = Vector2(2, 2)
 
+[node name="Checkpoint3" parent="Obstacles/Checkpoints" instance=ExtResource("3_scc5w")]
+position = Vector2(2752, 32)
+scale = Vector2(2, 2)
+
 [node name="Utility Items" type="Node2D" parent="Obstacles"]
 
 [node name="CrystalMeth" parent="Obstacles/Utility Items" instance=ExtResource("2_b56k5")]
