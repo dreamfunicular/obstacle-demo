@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bqsi3lvigjgc2"]
 
-[ext_resource type="Script" uid="uid://bgv02l67ersl2" path="res://honey.gd" id="1_0hqk6"]
+[ext_resource type="Script" uid="uid://bgv02l67ersl2" path="res://Scripts/honey.gd" id="1_0hqk6"]
 [ext_resource type="Texture2D" uid="uid://1jscqxnormgh" path="res://Sprites/honey_placeholder.png" id="1_xfiae"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ua3u"]

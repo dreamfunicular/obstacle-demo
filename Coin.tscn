@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf2l50hrf6q0f"]
+
+[ext_resource type="Script" uid="uid://uarp7u6np5ne" path="res://Scripts/capitalism.gd" id="1_ou7jl"]
+[ext_resource type="Texture2D" uid="uid://dp4kbnv5k3wrx" path="res://Sprites/coin_placeholder.png" id="2_ou7jl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a28pv"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufda5"]
+atlas = ExtResource("2_ou7jl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fj540"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufda5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_ou7jl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a28pv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_fj540")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

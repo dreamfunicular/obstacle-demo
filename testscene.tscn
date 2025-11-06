@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dan4rxtgevd1d"]
+[gd_scene load_steps=16 format=3 uid="uid://dan4rxtgevd1d"]
 
 [ext_resource type="PackedScene" uid="uid://brd331nqpjaxm" path="res://floridaMan2.tscn" id="1_mawog"]
 [ext_resource type="Script" uid="uid://06opfnflu4up" path="res://Scripts/ice_ground.gd" id="1_scc5w"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bqtattgv2ny4b" path="res://ob_stake_le.tscn" id="8_fy0p5"]
 [ext_resource type="PackedScene" uid="uid://bgerkbn3tg657" path="res://OrbStayCool.tscn" id="8_j8njj"]
 [ext_resource type="PackedScene" uid="uid://bqsi3lvigjgc2" path="res://honey.tscn" id="11_egudy"]
+[ext_resource type="PackedScene" uid="uid://bf2l50hrf6q0f" path="res://Coin.tscn" id="12_01clm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
@@ -405,3 +406,23 @@ position = Vector2(2296, 128)
 
 [node name="Honey32" parent="Obstacles/Traps" instance=ExtResource("11_egudy")]
 position = Vector2(2264, 128)
+
+[node name="Coins" type="Node2D" parent="Obstacles"]
+
+[node name="Coin" parent="Obstacles/Coins" instance=ExtResource("12_01clm")]
+position = Vector2(960, 64)
+
+[node name="Coin2" parent="Obstacles/Coins" instance=ExtResource("12_01clm")]
+position = Vector2(1024, 64)
+
+[node name="Coin3" parent="Obstacles/Coins" instance=ExtResource("12_01clm")]
+position = Vector2(1152, 64)
+
+[node name="Coin4" parent="Obstacles/Coins" instance=ExtResource("12_01clm")]
+position = Vector2(1216, 64)
+
+[node name="Coin5" parent="Obstacles/Coins" instance=ExtResource("12_01clm")]
+position = Vector2(1408, 96)
+
+[node name="Coin6" parent="Obstacles/Coins" instance=ExtResource("12_01clm")]
+position = Vector2(2560, 96)
