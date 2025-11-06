@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 				current_speed = lerpf(current_speed, 0, ice_speed_smooth)
 			else:
 				current_speed = lerpf(current_speed, 0, speed_smooth)
-				if current_speed < 0.05:
+				if abs(current_speed) < 0.05:
 					current_speed = 0
 			velocity.x = current_speed
 
@@ -105,13 +105,17 @@ func _physics_process(delta: float) -> void:
 func _on_coyote_timer_timeout() -> void:
 	canCoyote = false
 
-func AddVelocity(vel: Vector2, reset: bool = false)->void:
-	if reset and vel.x != 0:
+func AddVelocity(vel: Vector2, resety: bool = false, resetx: bool = false)->void:
+	if resetx and vel.x != 0:
 		velocity.x = 0
-	if reset and vel.y != 0:
+	if resety and vel.y != 0:
 		velocity.y = 0
 	velocity.x += vel.x
 	velocity.y += vel.y
+	if wasGrounded and jumps > 0:
+		jumps -= 1
+	canCoyote = false
+	wasGrounded = false
 
 func check_is_on_ice():
 	on_ice = false
