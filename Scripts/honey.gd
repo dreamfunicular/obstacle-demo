@@ -2,9 +2,10 @@ extends Area2D
 
 var touching: bool = false
 var player: FloridaMan
+@export var sprite: String = "default"
 
 func _ready() -> void:
-	$AnimatedSprite2D.play("default")
+	$AnimatedSprite2D.play(sprite)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is FloridaMan:

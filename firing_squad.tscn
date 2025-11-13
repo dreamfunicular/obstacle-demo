@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://dihd57feboe6a"]
+
+[ext_resource type="Texture2D" uid="uid://cnxm07ffew5ab" path="res://Sprites/crosshair.png" id="1_1y7bg"]
+[ext_resource type="Script" uid="uid://b8smao1yugxx6" path="res://Scripts/firing_squad.gd" id="1_gm2b2"]
+[ext_resource type="Texture2D" uid="uid://cdeg5fmgne463" path="res://Sprites/sniper-dot.png" id="2_gm2b2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk6ng"]
+size = Vector2(512, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bwadl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1y7bg")
+}],
+"loop": true,
+"name": &"Aiming",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1y7bg")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Locked",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gm2b2")
+}],
+"loop": true,
+"name": &"Searching",
+"speed": 12.0
+}]
+
+[node name="FiringSquad" type="Area2D"]
+script = ExtResource("1_gm2b2")
+positions = [Vector2(-256, 64), Vector2(256, -64), Vector2(256, 64), Vector2(-256, -64)]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nk6ng")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bwadl")
+animation = &"Aiming"
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="LockOnTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="LockOnTimer" to="." method="_on_lock_on_timer_timeout"]

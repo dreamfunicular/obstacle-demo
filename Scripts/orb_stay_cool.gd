@@ -6,6 +6,9 @@ var active: bool = true
 var touching: bool = false
 var player: FloridaMan
 
+func _ready() -> void:
+	sprite.play("Active")
+
 func _on_body_entered(body: Node2D) -> void:
 	if body is FloridaMan and active:
 		pickup(body)

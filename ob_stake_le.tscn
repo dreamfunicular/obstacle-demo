@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqtattgv2ny4b"]
+[gd_scene load_steps=5 format=3 uid="uid://bqtattgv2ny4b"]
 
 [ext_resource type="Script" uid="uid://cw6jv8k3pxqau" path="res://Scripts/ob_stake_le.gd" id="1_c1hn1"]
+[ext_resource type="Texture2D" uid="uid://dodccaqyen1jf" path="res://Sprites/Obstakele-Sheet.png" id="2_qra57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd173"]
 size = Vector2(48, 32)
@@ -14,20 +15,6 @@ script = ExtResource("1_c1hn1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bd173")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -16.0
-offset_right = 24.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.874577, 0.551511, 0.479586, 1)
-
 [node name="TriggerArea2D" type="Area2D" parent="."]
 scale = Vector2(4, 1)
 
@@ -36,6 +23,11 @@ position = Vector2(-128, 0)
 shape = SubResource("RectangleShape2D_c1hn1")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_qra57")
 
 [connection signal="body_entered" from="TriggerArea2D" to="." method="_on_trigger_area_2d_body_entered"]
 [connection signal="body_exited" from="TriggerArea2D" to="." method="_on_trigger_area_2d_body_exited"]

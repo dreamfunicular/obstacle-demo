@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqsi3lvigjgc2"]
+[gd_scene load_steps=20 format=3 uid="uid://bqsi3lvigjgc2"]
 
 [ext_resource type="Script" uid="uid://bgv02l67ersl2" path="res://Scripts/honey.gd" id="1_0hqk6"]
 [ext_resource type="Texture2D" uid="uid://1jscqxnormgh" path="res://Sprites/honey_placeholder.png" id="1_xfiae"]
+[ext_resource type="Texture2D" uid="uid://5e6wwd7soshl" path="res://Sprites/Honey_tileset.png" id="2_vir7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ua3u"]
 size = Vector2(32, 16)
@@ -46,6 +47,22 @@ region = Rect2(256, 0, 32, 32)
 atlas = ExtResource("1_xfiae")
 region = Rect2(288, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vbps"]
+atlas = ExtResource("2_vir7t")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwpo1"]
+atlas = ExtResource("2_vir7t")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qono5"]
+atlas = ExtResource("2_vir7t")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njgjo"]
+atlas = ExtResource("2_vir7t")
+region = Rect2(96, 0, 32, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vbps"]
 animations = [{
 "frames": [{
@@ -82,6 +99,38 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vbps")
+}],
+"loop": true,
+"name": &"left",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwpo1")
+}],
+"loop": true,
+"name": &"leftedge",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qono5")
+}],
+"loop": true,
+"name": &"right",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njgjo")
+}],
+"loop": true,
+"name": &"rightedge",
+"speed": 6.0
 }]
 
 [node name="Honey" type="Area2D"]
@@ -93,7 +142,6 @@ shape = SubResource("RectangleShape2D_1ua3u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_3vbps")
-frame_progress = 0.17725
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,24 +1,74 @@
-[gd_scene load_steps=6 format=3 uid="uid://e5yh778f1rr4"]
+[gd_scene load_steps=13 format=3 uid="uid://e5yh778f1rr4"]
 
-[ext_resource type="Texture2D" uid="uid://b0x1hdlxwwai7" path="res://Sprites/stake.png" id="1_v7oki"]
 [ext_resource type="Script" uid="uid://b03oya54bdvuw" path="res://Scripts/bullet.gd" id="1_v8qja"]
+[ext_resource type="Texture2D" uid="uid://bqjcsmk73qwap" path="res://Sprites/Stakele-Sheet.png" id="2_v8qja"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8qja"]
 radius = 4.0
+height = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4vbm"]
-atlas = ExtResource("1_v7oki")
+atlas = ExtResource("2_v8qja")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b2rl"]
+atlas = ExtResource("2_v8qja")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7duk"]
+atlas = ExtResource("2_v8qja")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2bd8"]
+atlas = ExtResource("2_v8qja")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0pa3"]
+atlas = ExtResource("2_v8qja")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ol1o"]
+atlas = ExtResource("2_v8qja")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gofb6"]
+atlas = ExtResource("2_v8qja")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bibm"]
+atlas = ExtResource("2_v8qja")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2b2rl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t4vbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b2rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7duk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2bd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0pa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ol1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gofb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bibm")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="Bullet" type="Area2D"]
@@ -32,6 +82,7 @@ shape = SubResource("CapsuleShape2D_v8qja")
 z_index = -1
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2b2rl")
+frame_progress = 0.484437
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

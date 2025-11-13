@@ -1,45 +1,38 @@
-[gd_scene load_steps=10 format=3 uid="uid://b56bfbfwxt5cw"]
+[gd_scene load_steps=9 format=3 uid="uid://b56bfbfwxt5cw"]
 
-[ext_resource type="Texture2D" uid="uid://7kl3gofpxrmq" path="res://Sprites/crystal_placeholder.png" id="1_a28pv"]
 [ext_resource type="Script" uid="uid://chbotu83mc6l0" path="res://Scripts/crystal_meth.gd" id="1_vwrov"]
+[ext_resource type="Texture2D" uid="uid://b2hsit7lwhhf2" path="res://Sprites/meth-sheet.png" id="2_vwrov"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a28pv"]
 radius = 16.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vwrov"]
-atlas = ExtResource("1_a28pv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yyfa"]
+atlas = ExtResource("2_vwrov")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7yyfa"]
-atlas = ExtResource("1_a28pv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxyt2"]
+atlas = ExtResource("2_vwrov")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yxyt2"]
-atlas = ExtResource("1_a28pv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt14f"]
+atlas = ExtResource("2_vwrov")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lt14f"]
-atlas = ExtResource("1_a28pv")
-region = Rect2(96, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7x7m"]
-atlas = ExtResource("1_a28pv")
-region = Rect2(128, 0, 32, 32)
+atlas = ExtResource("2_vwrov")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yxyt2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vwrov")
+"texture": SubResource("AtlasTexture_7yyfa")
 }],
 "loop": true,
 "name": &"Active",
 "speed": 12.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7yyfa")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yxyt2")
 }, {
@@ -63,7 +56,7 @@ shape = SubResource("CircleShape2D_a28pv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_yxyt2")
-animation = &"Break"
+animation = &"Active"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5

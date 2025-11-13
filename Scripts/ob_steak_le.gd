@@ -8,6 +8,9 @@ var player: FloridaMan
 
 @export var power: Vector2 = Vector2(0, -2500)
 
+func _ready() -> void:
+	sprite.play("Active")
+
 func _on_body_entered(body: Node2D) -> void:
 	if body is FloridaMan and active:
 		pickup(body)

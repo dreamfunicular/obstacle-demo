@@ -1,10 +1,10 @@
+Sprite2D
 Node2D
+Timer
 AnimatedSprite2D
-ColorRect
 CollisionShape2D
 Area2D
-Timer
-Sprite2D
+ColorRect
 Camera2D
 AnimationPlayer
 CharacterBody2D
